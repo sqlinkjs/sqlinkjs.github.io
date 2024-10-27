@@ -175,6 +175,8 @@
          Started</button>
       <button id="configuration_tab" class="tablinks"
          onclick="openModule(event, 'configuration')">Configuration</button>
+         <button id="auth_tab" class="tablinks" onclick="openModule(event, 'auth-query')">Authentication</button>
+
       <!-- <button id="select-query_tab" class="tablinks" onclick="openModule(event, 'select-query')">Reading Data</button>
          <button id="insert-query_tab" class="tablinks" onclick="openModule(event, 'insert-query')">Inserting
          Data</button>
@@ -190,6 +192,12 @@
          <span>Upserting Data</span>
       </button>
       <button id="procedures_tab" class="tablinks" onclick="openModule(event, 'procedures')">Procedures</button>
+      
+      <button id="upload_tab" class="tablinks" onclick="openModule(event, 'upload-query')">Uploading Files</button>
+      <button id="hosting_tab" class="tablinks" onclick="openModule(event, 'hosting-query')">Hosting Files</button>
+
+      
+      
       <button id="updating-package_tab" class="tablinks" onclick="openModule(event, 'updating-package')">Updating
          Package</button>
    </div>
@@ -818,6 +826,17 @@ Server is running on http://172.20.10.4:3001
             </div>
          </div>
       </div>
+   </div>
+   <div id="hosting-query" class="tabcontent">
+      <p class="text-3xl my-5 font-semibold text-gray-800">Hosting Files</p>
+
+   </div>
+   <div id="upload-query" class="tabcontent">
+      <p class="text-3xl my-5 font-semibold text-gray-800">Uploading Files</p>
+
+   </div>
+   <div id="auth-query" class="tabcontent">
+      <p class="text-3xl my-5 font-semibold text-gray-800">Authentication</p>
    </div>
    <div id="procedures" class="tabcontent">
       <p class="text-3xl my-5 font-semibold text-gray-800">Procedures</p>
