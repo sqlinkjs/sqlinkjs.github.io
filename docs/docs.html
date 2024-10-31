@@ -175,7 +175,7 @@
          Started</button>
       <button id="configuration_tab" class="tablinks"
          onclick="openModule(event, 'configuration')">Configuration</button>
-         <button id="auth_tab" class="tablinks" onclick="openModule(event, 'auth-query')">Authentication</button>
+      <button id="auth_tab" class="tablinks" onclick="openModule(event, 'auth-query')">Authentication</button>
 
       <!-- <button id="select-query_tab" class="tablinks" onclick="openModule(event, 'select-query')">Reading Data</button>
          <button id="insert-query_tab" class="tablinks" onclick="openModule(event, 'insert-query')">Inserting
@@ -192,12 +192,12 @@
          <span>Upserting Data</span>
       </button>
       <button id="procedures_tab" class="tablinks" onclick="openModule(event, 'procedures')">Procedures</button>
-      
+
       <button id="upload_tab" class="tablinks" onclick="openModule(event, 'upload-query')">Uploading Files</button>
       <button id="hosting_tab" class="tablinks" onclick="openModule(event, 'hosting-query')">Hosting Files</button>
 
-      
-      
+
+
       <button id="updating-package_tab" class="tablinks" onclick="openModule(event, 'updating-package')">Updating
          Package</button>
    </div>
@@ -615,7 +615,7 @@ Server is running on http://172.20.10.4:3001
             </div>
          </div>
       </div>
-      <hr style="color: black;border: 1px solid black;"/>
+      <hr style="color: black;border: 1px solid black;" />
       <div>
          <p class="text-3xl my-5 font-semibold text-gray-800">Inserting Data</p>
          <div>
@@ -690,7 +690,7 @@ Server is running on http://172.20.10.4:3001
             </div>
          </div>
       </div>
-      <hr style="color: black;border: 1px solid black;"/>
+      <hr style="color: black;border: 1px solid black;" />
       <div>
          <p class="text-3xl my-5 font-semibold text-gray-800">Updating Data</p>
          <div>
@@ -765,7 +765,7 @@ Server is running on http://172.20.10.4:3001
             </div>
          </div>
       </div>
-      <hr style="color: black;border: 1px solid black;"/>
+      <hr style="color: black;border: 1px solid black;" />
       <div>
          <p class="text-3xl my-5 font-semibold text-gray-800">Deleting Data</p>
          <div>
@@ -837,6 +837,78 @@ Server is running on http://172.20.10.4:3001
    </div>
    <div id="auth-query" class="tabcontent">
       <p class="text-3xl my-5 font-semibold text-gray-800">Authentication</p>
+      <div>
+         <div>
+            <p class="my-5 text-gray-800">
+               Authentication is the process of verifying the identity of a user or entity trying to access a system or
+               resource. It is essential in software applications to ensure that only authorized users can access
+               sensitive data and perform specific actions. By confirming the user's identity, authentication helps
+               protect against unauthorized access and potential security threats.
+            </p>
+            <p class="class-xl text-gray-800"><b>Enabling the Authentication</b></p>
+            <p class="my-4 lass-xl text-gray-800">To enable authentication in your application using sqlink, run the
+               following command in your terminal:</p>
+            <div class="my-2 terminal-container ">
+               <div class="terminal-header">
+                  <span class="red"></span>
+                  <span class="yellow"></span>
+                  <span class="green"></span>
+               </div>
+               <div class="terminal-body">
+                  <pre><code id="terminal-content-install">$ sqlink run auth</code></pre>
+               </div>
+            </div>
+            <p>
+               This will activate the authentication module, allowing users to register, log in, and receive tokens for
+               accessing protected resources.
+
+               The authentication library in sqlink uses JSON Web Tokens (JWT) for secure, stateless authentication.
+               Upon successful login, a JWT token is generated and returned to the user, which can then be used for
+               authorized access.
+            </p>
+         </div>
+         <div>
+            <p class="my-5 text-gray-800"><b>Authentication APIs</b></p>
+            <p class="my-5 text-gray-900"><b>1. Register a New User</b></p>
+            <ul style="list-style-type: circle;margin-left: 50px;">
+               <li class="my-5 text-gray-700"><b>Endpoint: </b><code>/auth/register</code></li>
+               <li class="my-5 text-gray-700"><b>Method: </b><code>POST</code></li>
+               <li class="my-5 text-gray-700"><b>Description: </b><code>This API registers a new user into the system.</code></li>
+            </ul>
+            <p class="my-5 text-gray-900"><b>2. Login a User</b></p>
+            <ul style="list-style-type: circle;margin-left: 50px;">
+               <li class="my-5 text-gray-700"><b>Endpoint: </b><code>/auth/login</code></li>
+               <li class="my-5 text-gray-700"><b>Method: </b><code>POST</code></li>
+               <li class="my-5 text-gray-700"><b>Description: </b><code>This API logs in an existing user and provides a JWT token upon successful authentication.</code></li>
+            </ul>
+         </div>
+         <div>
+            <p class="my-5 text-gray-800"><b>Request Payload (for both APIs):</b></p>
+            <p class="my-5 text-gray-800">Both <code>/auth/register</code> and <code>/auth/login</code> endpoints expect the following JSON payload as input:</p>
+            <p><b>Payload: </b></p>
+            <pre><code>{
+               email: "YOUR_EMAIL",
+               password: "YOUR_PASSWORD"
+}</code>
+                         </pre>
+         </div>
+         <div>
+            <p class="my-5 text-gray-800"><b>Success Response</b></p>
+            <p class="my-2 text-gray-800">If the request is successful, you will receive a 200 OK response from the server.
+            </p>
+         </div>
+         <div>
+            <div
+            class="p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300"
+            role="alert">
+            <span class="font-bold">IMPORTANT </span><br />
+            If you attempt to access any data or endpoints while the application is in authentication mode without providing a valid JWT token, you will receive an Access Denied message.
+            <br/>
+            Using this approach ensures that your application is secure and that only authenticated users can access protected routes and resources.
+         </div>
+         </div>
+      </div>
+
    </div>
    <div id="procedures" class="tabcontent">
       <p class="text-3xl my-5 font-semibold text-gray-800">Procedures</p>
@@ -1108,7 +1180,7 @@ Server is running on http://172.20.10.4:3001
       const handleVersionChange = (data) => {
          navigation.navigate(`/docs/${data.value}.html`)
       }
-      document.getElementById("introduction_tab").click();
+      document.getElementById("auth_tab").click();
       document.getElementById('terminal-content-install').textContent = navigator.platform.toLowerCase().startsWith("win") ? "> npm install -g sqlink" : "$ sudo npm install -g sqlink"
    </script>
    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
