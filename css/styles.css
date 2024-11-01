@@ -1,6 +1,5 @@
 :root {
   font-family: "Poppins", sans-serif;
-  background-color: #f8f9fa;
 }
 body{
   margin: 0px;
@@ -59,9 +58,8 @@ body{
   color: #808080;
 }
 .app-logo{
-  filter: drop-shadow(10px 10px 4px #808080);
-  height: 8rem;
-  width: 15rem;
+  height: 2rem;
+  width: 4rem;
 }
 .terminal-container {
   width: 600px;

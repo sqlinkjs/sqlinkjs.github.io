@@ -19,127 +19,187 @@
 <body>
     <header>
 
+        <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+            <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+                <a href="https://flowbite.com" class="flex items-center gap-2">
+                    <img class="app-logo" src="./images/logo.png" />
+                    <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">SQLink</span>
+                </a>
+                <div class="flex items-center lg:order-2">
+                    <button type="button"
+                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                        <a href="https://github.com/Santhoshlm10/SQLink" target="_blank"
+                            class="text-center flex flex-row gap-2">
+                            <img src="./images/github.png" width="20" height="10">
+                            <span>Github</span>
+                        </a>
+                    </button>
+                    <button type="button"
+                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                        <a href="https://www.npmjs.com/package/sqlink" target="_blank"
+                            class="text-center flex flex-row gap-2">
+                            <img src="./images/npm.png" width="20" height="10">
+                            <span>npm</span>
+                        </a>
+                    </button>
+                </div>
+                <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+                    <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                        <li>
+                            <a href="/docs/docs.html"
+                                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:text-blue-400 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Documentation</a>
+                        </li>
+                        <li>
+                            <a href="/docs/projects.html"
+                                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Projects</a>
+                        </li>
+                        <li>
+                            <a href="/docs//explorer.html"
+                                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Explorer</a>
+                        </li>
+                        <li>
+                            <a href="/docs/generator.html"
+                                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Generator</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
     <main>
-        <div class="app-container">
-            <div class="logo-container">
-                <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-                  </div>
-                <img class="app-logo" src="./images/logo.png" />
-                <p class="app-title">Introducing <span class="text-blue-600">SQLink</span></p>
-                <p class="app-description">Simplify your backend development with inbuilt APIs</p>
-            </div>
-            <div class="command-container">
-                <div class="w-full max-w-[24rem] ">
-                    <div class="relative">
-                        <label for="npm-install-copy-text" class="sr-only">Label</label>
-                        <input id="npm-install-copy-text" type="text"
-                            class="col-span-6 bg-gray-50 font-semibold border border-gray-500 text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            value="npm install -g sqlite" disabled readonly>
-                        <button onclick="onCopyClick()" data-copy-to-clipboard-target="npm-install-copy-text"
-                            class="absolute end-2.5 top-1/2 -translate-y-1/2 text-gray-900 dark:text-gray-400 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 rounded-lg py-2 px-2.5 inline-flex items-center justify-center bg-white border-gray-200 border">
-                            <span id="default-message" class="inline-flex items-center">
-                                <svg class="w-3 h-3 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor" viewBox="0 0 18 20">
-                                    <path
-                                        d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z" />
-                                </svg>
-                                <span id="copy-text" class="text-xs font-semibold">Copy</span>
-                            </span>
-                            <span id="success-message" class="inline-flex items-center">
-                                <svg class="w-3 h-3 text-blue-700 dark:text-blue-500 me-1.5" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                </svg>
-                                <span class="text-xs font-semibold text-blue-700 dark:text-blue-500">Copied</span>
-                            </span>
-                        </button>
+        <section class="bg-white dark:bg-gray-900">
+            <div class="app-container">
+                <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
+                    <h1
+                        class="my-4 mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                        Accelerate your backend development</h1>
+                    <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16  dark:text-gray-400">Streamline
+                        backend integration with dynamic RESTful APIs, stored procedure execution, and seamless CRUD
+                        operations on MySQL tables – all in a single, powerful Node.js library</p>
+                    <div>
+                        <div class="command-container">
+                            <div class="w-full max-w-[24rem] ">
+                                <h4
+                                    class="my-4 mb-4 text-lg font-bold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-xl dark:text-white">
+                                    Get started by installing</h4>
+                                <div class="relative">
+                                    <label for="npm-install-copy-text" class="sr-only">Label</label>
+                                    <input id="npm-install-copy-text" type="text"
+                                        class="col-span-6 bg-gray-50 font-semibold border border-gray-500 text-gray-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        value="npm install -g sqlite" disabled readonly>
+                                    <button onclick="onCopyClick()"
+                                        data-copy-to-clipboard-target="npm-install-copy-text"
+                                        class="absolute end-2.5 top-1/2 -translate-y-1/2 text-gray-900 dark:text-gray-400 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 rounded-lg py-2 px-2.5 inline-flex items-center justify-center bg-white border-gray-200 border">
+                                        <span id="default-message" class="inline-flex items-center">
+                                            <svg class="w-3 h-3 me-1.5" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 18 20">
+                                                <path
+                                                    d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z" />
+                                            </svg>
+                                            <span id="copy-text" class="text-xs font-semibold">Copy</span>
+                                        </span>
+                                        <span id="success-message" class="inline-flex items-center">
+                                            <svg class="w-3 h-3 text-blue-700 dark:text-blue-500 me-1.5"
+                                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                viewBox="0 0 16 12">
+                                                <path stroke="currentColor" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="2"
+                                                    d="M1 5.917 5.724 10.5 15 1.5" />
+                                            </svg>
+                                            <span
+                                                class="text-xs font-semibold text-blue-700 dark:text-blue-500">Copied</span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-
-
             </div>
-            <div class="actions-container">
-                <button type="button"
-                    class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                    <a href="/docs/docs.html" class="text-center flex flex-row gap-2">
-                        <img src="./images/document.png" width="20" height="10">
-                        <span>Documentation</span>
-                    </a>
-                </button>
-                <button type="button"
-                    class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                    <a href="https://github.com/Santhoshlm10/SQLink" target="_blank"
-                        class="text-center flex flex-row gap-2">
-                        <img src="./images/github.png" width="20" height="10">
-                        <span>Github</span>
-                    </a>
-                </button>
-                <button type="button"
-                    class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                    <a href="https://www.npmjs.com/package/sqlink" target="_blank"
-                        class="text-center flex flex-row gap-2">
-                        <img src="./images/npm.png" width="20" height="10">
-                        <span>npm</span>
-                    </a>
-                </button>
-            </div>
-            <div class="key-features">
-                <section class="bg-white dark:bg-gray-900">
-                    <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-                        <div class="max-w mb-8 lg:mb-16">
-                            <p
-                                class="text-center mb-4 text-2xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-                                Key Features</p>
-                        </div>
-                        <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
-                            <div class="bg-gray-100 p-5 border rounded-lg">
-                                <div
-                                    class="bg-gray-300 flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                                        width="24px" fill="#5f6368">
-                                        <path
-                                            d="M480-120q-151 0-255.5-46.5T120-280v-400q0-66 105.5-113T480-840q149 0 254.5 47T840-680v400q0 67-104.5 113.5T480-120Zm0-479q89 0 179-25.5T760-679q-11-29-100.5-55T480-760q-91 0-178.5 25.5T200-679q14 30 101.5 55T480-599Zm0 199q42 0 81-4t74.5-11.5q35.5-7.5 67-18.5t57.5-25v-120q-26 14-57.5 25t-67 18.5Q600-528 561-524t-81 4q-42 0-82-4t-75.5-11.5Q287-543 256-554t-56-25v120q25 14 56 25t66.5 18.5Q358-408 398-404t82 4Zm0 200q46 0 93.5-7t87.5-18.5q40-11.5 67-26t32-29.5v-98q-26 14-57.5 25t-67 18.5Q600-328 561-324t-81 4q-42 0-82-4t-75.5-11.5Q287-343 256-354t-56-25v99q5 15 31.5 29t66.5 25.5q40 11.5 88 18.5t94 7Z" />
-                                    </svg>
-                                </div>
-                                <h3 class="mb-2 text-xl font-bold dark:text-white">SQL-like Syntax</h3>
-                                <p class="text-gray-500 dark:text-gray-400">SQLink allows developers to use SQL-like
-                                    syntax for querying data, which can be more intuitive for those familiar with SQL.
-                                </p>
-                            </div>
-                            <div class="bg-gray-100 p-5 border rounded-lg">
-                                <div
-                                    class="bg-gray-300 flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                                        width="24px" fill="#5f6368">
-                                        <path
-                                            d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z" />
-                                    </svg>
-                                </div>
-                                <h3 class="mb-2 text-xl font-bold dark:text-white">JavaScript Integration</h3>
-                                <p class="text-gray-500 dark:text-gray-400">Being a JavaScript library, it integrates
-                                    seamlessly with web applications, making it suitable for both front-end and back-end
-                                    development.</p>
-                            </div>
-                            <div class="bg-gray-100 p-5 border rounded-lg">
-                                <div
-                                    class="bg-gray-300 flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                                        width="24px" fill="#5f6368">
-                                        <path
-                                            d="M480-160q-56 0-105.5-17.5T284-227l-56 55q-11 11-28 11t-28-11q-11-11-11-28t11-28l55-55q-32-41-49.5-91T160-480q0-134 93-227t227-93h320v320q0 134-93 227t-227 93Zm0-80q100 0 170-70t70-170v-240H480q-100 0-170 70t-70 170q0 39 12 74.5t33 64.5l207-207q11-11 28-11t28 11q12 12 12 28.5T548-491L341-284q29 21 64.5 32.5T480-240Zm0-240Z" />
-                                    </svg>
-                                </div>
-                                <h3 class="mb-2 text-xl font-bold dark:text-white">Lightweight</h3>
-                                <p class="text-gray-500 dark:text-gray-400">The library is designed to be lightweight,
-                                    which is beneficial for performance-sensitive applications.</p>
-                            </div>
-                        </div>
+        </section>
+        <div>
+            <section class="bg-white dark:bg-gray-900">
+                <div
+                    class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+                    <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                            Transform MySQL Tables into Dynamic REST APIs
+
+                        </h2>
+                        <p class="mb-4">
+                            Unlock your data with instant REST access! Effortlessly query, modify, and manage MySQL
+                            tables. From CRUD operations to advanced upsert and distinct queries – all in one powerful
+                            tool
+                        </p>
                     </div>
-                </section>
-            </div>
+                    <div class="grid grid-cols-1 gap-4 mt-8">
+                        <img class="w-full rounded-lg"
+                            src="./images/img1.jpg"
+                            alt="office content 1">
+                    </div>
+                </div>
+            </section>
+            <section class="bg-white dark:bg-gray-900">
+                <div
+                    class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+
+                    <div class="grid grid-cols-1 gap-4 mt-8">
+                        <img class="w-full rounded-lg"
+                            src="./images/img2.jpg"
+                            alt="office content 1">
+                    </div>
+                    <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                            Built-In Authentication Ready for Scale
+                        </h2>
+                        <p class="mb-4">
+                            Security made simple with JWT-authenticated endpoints. Kickstart your app’s security with
+                            /register and /login APIs, letting you focus on what matters most – building your app
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="bg-white dark:bg-gray-900">
+                <div
+                    class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+                    <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                            Streamlined File Uploads with Access Control
+                        </h2>
+                        <p class="mb-4">
+                            Say goodbye to complex file handling. Effortlessly upload, store, and retrieve files across
+                            formats, and get direct URLs for easy access – ideal for any modern backend
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-4 mt-8">
+                        <img class="w-full rounded-lg"
+                            src="./images/img3.jpg"
+                            alt="office content 1">
+                    </div>
+                </div>
+            </section>
+            <section class="bg-white dark:bg-gray-900">
+                <div
+                    class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+
+                    <div class="grid grid-cols-1 gap-4 mt-8">
+                        <img class="w-full rounded-lg"
+                            src="./images/img4.jpg"
+                            alt="office content 1">
+                    </div>
+                    <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                            Host and Serve Files Directly from Your API
+                        </h2>
+                        <p class="mb-4">
+                            Your personal file server, now integrated with your API. Host entire directories, access
+                            content instantly, and streamline file management all through SQLink
+                        </p>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </main>
     <footer>
