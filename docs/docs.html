@@ -827,13 +827,98 @@ Server is running on http://172.20.10.4:3001
          </div>
       </div>
    </div>
+
    <div id="hosting-query" class="tabcontent">
       <p class="text-3xl my-5 font-semibold text-gray-800">Hosting Files</p>
+      <p  class="my-2 flex flex-row gap-2">This feature allows users to host and access any files on their local machine with a single command.</p>
+      
+      <p class="my-3 text-gray-800"><b>Command</b></p>
+      <div class="terminal-container">
+         <div class="terminal-header">
+            <span class="red"></span>
+            <span class="yellow"></span>
+            <span class="green"></span>
+         </div>
+         <div class="terminal-body">
+            <pre><code id="terminal-content">$ sqlink host YOUR_PORT YOUR_PATH</code></pre>
+         </div>
+      </div>
+      <ul class="p-2">
+          <li><strong>PATH</strong>: The path to the directory or file you wish to host.</li>
+          <li><strong>PORT</strong>: The port number to serve the files (e.g., <code>3002</code>).</li>
+      </ul>
+      
+      <p class="my-5 text-gray-800"><b>Accessing Hosted Files</b></p>
 
+      <p class="my-2 text-gray-800">Once the hosting command is running, files are accessible through URLs in the following format:</p>
+      <div class="my-2">
+         <pre
+            class="m-1 p-2 bg-gray-200"><code>http://localhost:PORT/static/YOUR_FILE_PATH</code></pre>
+      </div>
+      <p class="my-2 text-gray-800">Replace <code>YOUR_FILE_PATH</code> with the relative path to the specific file from the hosted directory. For instance, if you are hosting a file at <code>/home/user/docs/file.txt</code> and started the server with <code>sqlink host /home/user/docs 3002</code>, the access URL would be:</p>
+      <div class="my-2">
+         <pre
+            class="m-1 p-2 bg-gray-200"><code>http://localhost:3002/static/file.txt</code></pre>
+      </div>
+      <p class="my-3 text-gray-800"><b>Example</b></p>
+
+      <div class="my-2">
+         <pre
+            class="m-1 p-2 bg-gray-200"><code>sqlink host /home/user/documents 3002</code></pre>
+      </div>
+      <ul>
+          <li><strong>Directory being hosted</strong>: <code>/home/user/documents</code></li>
+          <li><strong>Port</strong>: <code>3002</code></li>
+          <li><strong>Access URL for a file</strong>: <code>http://localhost:3002/static/sample.txt</code> (for <code>/home/user/documents/sample.txt</code>)</li>
+      </ul>
+      
+      <p>This setup provides a quick and straightforward way to access files on your local machine over HTTP, making it useful for sharing or accessing files remotely as long as the server remains active.</p>
+      
    </div>
    <div id="upload-query" class="tabcontent">
       <p class="text-3xl my-5 font-semibold text-gray-800">Uploading Files</p>
+      <p class="my-2 flex flex-row gap-2">This feature enables users to upload files to a specified endpoint and store them on disk.</p>
+      
+      <p class="my-1 flex flex-row gap-2 text-gray-900">Endpoint</p>
+      <ul>
+          <li><strong>URL</strong>: <code>/upload</code></li>
+          <li><strong>Method</strong>: <code>POST</code></li>
+          <li><strong>Required Field</strong>: <code>files</code> (multipart form-data key)</li>
+      </ul>
+      
+      <div>
+         <div
+         class="my-4 p-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300"
+         role="alert">
+         <p><strong>Note</strong>: Ensure the field name in the request body is specified as <code>"files"</code>. Any other field name will prevent the file from being uploaded.</p>
+      </div>
+      </div>
 
+
+      <div class="my-4"><strong>Directory</strong>: <code>USER_BASE_PATH/.sqlink/uploads</code></div>
+      
+      <h3>Example Response</h3>
+      <pre>
+      {
+          "success": true,
+          "data": [
+              {
+                  "fieldname": "files",
+                  "originalname": "YOUR_FILE_NAME",
+                  "encoding": "7bit",
+                  "mimetype": "text/csv",
+                  "destination": "YOUR_DESTINATION",
+                  "filename": "YOUR_FILE_NAME",
+                  "path": "YOUR_PATH",
+                  "size": 512,
+                  "accessURL": "http://192.168.1.4:3001/file/YOUR_FILE_NAME.csv"
+              }
+          ]
+      }
+      </pre>
+      
+      <p>This setup provides a convenient way to store and access uploaded files directly.</p>
+      
    </div>
    <div id="auth-query" class="tabcontent">
       <p class="text-3xl my-5 font-semibold text-gray-800">Authentication</p>
@@ -1180,7 +1265,7 @@ Server is running on http://172.20.10.4:3001
       const handleVersionChange = (data) => {
          navigation.navigate(`/docs/${data.value}.html`)
       }
-      document.getElementById("auth_tab").click();
+      document.getElementById("introduction_tab").click();
       document.getElementById('terminal-content-install').textContent = navigator.platform.toLowerCase().startsWith("win") ? "> npm install -g sqlink" : "$ sudo npm install -g sqlink"
    </script>
    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
