@@ -120,6 +120,18 @@
          align-items: center;
       }
 
+
+      .newText {
+         background-color: #dbeafe;
+         color: #1e40af;
+         font-size: 0.925rem;
+         font-weight: 600;
+         margin-left: 0.5rem;
+         padding: 0.125rem 0.375rem;
+         border-radius: 0.25rem;
+         border: 1px solid #dbeafe;
+      }
+
       @media screen and (max-width: 600px) {
          .headerContainer {
             display: flex;
@@ -176,6 +188,8 @@
       <button id="configuration_tab" class="tablinks"
          onclick="openModule(event, 'configuration')">Configuration</button>
       <button id="auth_tab" class="tablinks" onclick="openModule(event, 'auth-query')">Authentication</button>
+      <button id="enum_tab" class="tablinks" onclick="openModule(event, 'enum-query')">Generate Enum<span
+            class="newText">New</span></button>
 
       <!-- <button id="select-query_tab" class="tablinks" onclick="openModule(event, 'select-query')">Reading Data</button>
          <button id="insert-query_tab" class="tablinks" onclick="openModule(event, 'insert-query')">Inserting
@@ -830,8 +844,9 @@ Server is running on http://172.20.10.4:3001
 
    <div id="hosting-query" class="tabcontent">
       <p class="text-3xl my-5 font-semibold text-gray-800">Hosting Files</p>
-      <p  class="my-2 flex flex-row gap-2">This feature allows users to host and access any files on their local machine with a single command.</p>
-      
+      <p class="my-2 flex flex-row gap-2">This feature allows users to host and access any files on their local machine
+         with a single command.</p>
+
       <p class="my-3 text-gray-800"><b>Command</b></p>
       <div class="terminal-container">
          <div class="terminal-header">
@@ -844,59 +859,63 @@ Server is running on http://172.20.10.4:3001
          </div>
       </div>
       <ul class="p-2">
-          <li><strong>PATH</strong>: The path to the directory or file you wish to host.</li>
-          <li><strong>PORT</strong>: The port number to serve the files (e.g., <code>3002</code>).</li>
+         <li><strong>PATH</strong>: The path to the directory or file you wish to host.</li>
+         <li><strong>PORT</strong>: The port number to serve the files (e.g., <code>3002</code>).</li>
       </ul>
-      
+
       <p class="my-5 text-gray-800"><b>Accessing Hosted Files</b></p>
 
-      <p class="my-2 text-gray-800">Once the hosting command is running, files are accessible through URLs in the following format:</p>
+      <p class="my-2 text-gray-800">Once the hosting command is running, files are accessible through URLs in the
+         following format:</p>
       <div class="my-2">
-         <pre
-            class="m-1 p-2 bg-gray-200"><code>http://localhost:PORT/static/YOUR_FILE_PATH</code></pre>
+         <pre class="m-1 p-2 bg-gray-200"><code>http://localhost:PORT/static/YOUR_FILE_PATH</code></pre>
       </div>
-      <p class="my-2 text-gray-800">Replace <code>YOUR_FILE_PATH</code> with the relative path to the specific file from the hosted directory. For instance, if you are hosting a file at <code>/home/user/docs/file.txt</code> and started the server with <code>sqlink host /home/user/docs 3002</code>, the access URL would be:</p>
+      <p class="my-2 text-gray-800">Replace <code>YOUR_FILE_PATH</code> with the relative path to the specific file from
+         the hosted directory. For instance, if you are hosting a file at <code>/home/user/docs/file.txt</code> and
+         started the server with <code>sqlink host /home/user/docs 3002</code>, the access URL would be:</p>
       <div class="my-2">
-         <pre
-            class="m-1 p-2 bg-gray-200"><code>http://localhost:3002/static/file.txt</code></pre>
+         <pre class="m-1 p-2 bg-gray-200"><code>http://localhost:3002/static/file.txt</code></pre>
       </div>
       <p class="my-3 text-gray-800"><b>Example</b></p>
 
       <div class="my-2">
-         <pre
-            class="m-1 p-2 bg-gray-200"><code>sqlink host /home/user/documents 3002</code></pre>
+         <pre class="m-1 p-2 bg-gray-200"><code>sqlink host /home/user/documents 3002</code></pre>
       </div>
       <ul>
-          <li><strong>Directory being hosted</strong>: <code>/home/user/documents</code></li>
-          <li><strong>Port</strong>: <code>3002</code></li>
-          <li><strong>Access URL for a file</strong>: <code>http://localhost:3002/static/sample.txt</code> (for <code>/home/user/documents/sample.txt</code>)</li>
+         <li><strong>Directory being hosted</strong>: <code>/home/user/documents</code></li>
+         <li><strong>Port</strong>: <code>3002</code></li>
+         <li><strong>Access URL for a file</strong>: <code>http://localhost:3002/static/sample.txt</code> (for
+            <code>/home/user/documents/sample.txt</code>)
+         </li>
       </ul>
-      
-      <p>This setup provides a quick and straightforward way to access files on your local machine over HTTP, making it useful for sharing or accessing files remotely as long as the server remains active.</p>
-      
+
+      <p>This setup provides a quick and straightforward way to access files on your local machine over HTTP, making it
+         useful for sharing or accessing files remotely as long as the server remains active.</p>
+
    </div>
    <div id="upload-query" class="tabcontent">
       <p class="text-3xl my-5 font-semibold text-gray-800">Uploading Files</p>
-      <p class="my-2 flex flex-row gap-2">This feature enables users to upload files to a specified endpoint and store them on disk.</p>
-      
+      <p class="my-2 flex flex-row gap-2">This feature enables users to upload files to a specified endpoint and store
+         them on disk.</p>
+
       <p class="my-1 flex flex-row gap-2 text-gray-900">Endpoint</p>
       <ul>
-          <li><strong>URL</strong>: <code>/upload</code></li>
-          <li><strong>Method</strong>: <code>POST</code></li>
-          <li><strong>Required Field</strong>: <code>files</code> (multipart form-data key)</li>
+         <li><strong>URL</strong>: <code>/upload</code></li>
+         <li><strong>Method</strong>: <code>POST</code></li>
+         <li><strong>Required Field</strong>: <code>files</code> (multipart form-data key)</li>
       </ul>
-      
+
       <div>
-         <div
-         class="my-4 p-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300"
-         role="alert">
-         <p><strong>Note</strong>: Ensure the field name in the request body is specified as <code>"files"</code>. Any other field name will prevent the file from being uploaded.</p>
-      </div>
+         <div class="my-4 p-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300"
+            role="alert">
+            <p><strong>Note</strong>: Ensure the field name in the request body is specified as <code>"files"</code>.
+               Any other field name will prevent the file from being uploaded.</p>
+         </div>
       </div>
 
 
       <div class="my-4"><strong>Directory</strong>: <code>USER_BASE_PATH/.sqlink/uploads</code></div>
-      
+
       <h3>Example Response</h3>
       <pre>
       {
@@ -916,9 +935,9 @@ Server is running on http://172.20.10.4:3001
           ]
       }
       </pre>
-      
+
       <p>This setup provides a convenient way to store and access uploaded files directly.</p>
-      
+
    </div>
    <div id="auth-query" class="tabcontent">
       <p class="text-3xl my-5 font-semibold text-gray-800">Authentication</p>
@@ -958,18 +977,22 @@ Server is running on http://172.20.10.4:3001
             <ul style="list-style-type: circle;margin-left: 50px;">
                <li class="my-5 text-gray-700"><b>Endpoint: </b><code>/auth/register</code></li>
                <li class="my-5 text-gray-700"><b>Method: </b><code>POST</code></li>
-               <li class="my-5 text-gray-700"><b>Description: </b><code>This API registers a new user into the system.</code></li>
+               <li class="my-5 text-gray-700"><b>Description:
+                  </b><code>This API registers a new user into the system.</code></li>
             </ul>
             <p class="my-5 text-gray-900"><b>2. Login a User</b></p>
             <ul style="list-style-type: circle;margin-left: 50px;">
                <li class="my-5 text-gray-700"><b>Endpoint: </b><code>/auth/login</code></li>
                <li class="my-5 text-gray-700"><b>Method: </b><code>POST</code></li>
-               <li class="my-5 text-gray-700"><b>Description: </b><code>This API logs in an existing user and provides a JWT token upon successful authentication.</code></li>
+               <li class="my-5 text-gray-700"><b>Description:
+                  </b><code>This API logs in an existing user and provides a JWT token upon successful authentication.</code>
+               </li>
             </ul>
          </div>
          <div>
             <p class="my-5 text-gray-800"><b>Request Payload (for both APIs):</b></p>
-            <p class="my-5 text-gray-800">Both <code>/auth/register</code> and <code>/auth/login</code> endpoints expect the following JSON payload as input:</p>
+            <p class="my-5 text-gray-800">Both <code>/auth/register</code> and <code>/auth/login</code> endpoints expect
+               the following JSON payload as input:</p>
             <p><b>Payload: </b></p>
             <pre><code>{
                email: "YOUR_EMAIL",
@@ -979,21 +1002,50 @@ Server is running on http://172.20.10.4:3001
          </div>
          <div>
             <p class="my-5 text-gray-800"><b>Success Response</b></p>
-            <p class="my-2 text-gray-800">If the request is successful, you will receive a 200 OK response from the server.
+            <p class="my-2 text-gray-800">If the request is successful, you will receive a 200 OK response from the
+               server.
             </p>
          </div>
          <div>
-            <div
-            class="p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300"
-            role="alert">
-            <span class="font-bold">IMPORTANT </span><br />
-            If you attempt to access any data or endpoints while the application is in authentication mode without providing a valid JWT token, you will receive an Access Denied message.
-            <br/>
-            Using this approach ensures that your application is secure and that only authenticated users can access protected routes and resources.
-         </div>
+            <div class="p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300"
+               role="alert">
+               <span class="font-bold">IMPORTANT </span><br />
+               If you attempt to access any data or endpoints while the application is in authentication mode without
+               providing a valid JWT token, you will receive an Access Denied message.
+               <br />
+               Using this approach ensures that your application is secure and that only authenticated users can access
+               protected routes and resources.
+            </div>
          </div>
       </div>
 
+   </div>
+
+   <div id="enum-query" class="tabcontent">
+      <p class="text-3xl my-5 font-semibold text-gray-800">Generate Enum</p>
+      <p class="my-5 text-gray-800">
+         Starting from v1.1.8 SQLink provides a feature to generate enums for your project. Enums are a set of named constants that represent a set of possible values. Enums are useful when you have a fixed set of values that are unlikely to change.
+      </p>
+      <p class="my-4 text-xl font-medium text-gray-800">
+         Usage
+      </p>
+      <div class="terminal-container">
+         <div class="terminal-header">
+            <span class="red"></span>
+            <span class="yellow"></span>
+            <span class="green"></span>
+         </div>
+         <div class="terminal-body">
+            <pre><code id="terminal-content-install">$ sqlink enum YOUR_TABLE_NAME</code></pre>
+         </div>
+      </div>
+      <p class="my-4 text-xl font-medium text-gray-800">
+         Example: Generate enum for customers table
+      </p>
+      <img src="./../../images/enum.png" height="760" width="860" />
+      <p class="my-5 text-gray-800">
+         As shown in the image above, the enum for the customers table is generated successfully. The enum is also going to be copied to the clipboard for easy access 😊.
+      </p>
    </div>
    <div id="procedures" class="tabcontent">
       <p class="text-3xl my-5 font-semibold text-gray-800">Procedures</p>
