@@ -1,4 +1,4 @@
-import { useMemo, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -12,12 +12,15 @@ import TerminalView from "../components/terminalview";
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
 
-  const installCommand = useMemo(() => {
-    if (navigator.platform.indexOf("Win") !== -1) {
-      return "npm install -g sqlink";
-    }
-    return "sudo npm install -g sqlink";
-  },[])
+const [installCommand, setInstallCommand] = useState("npm install -g sqlink");
+
+useEffect(() => {
+  if (navigator.platform.indexOf("Win") !== -1) {
+    setInstallCommand("npm install -g sqlink");
+  } else {
+    setInstallCommand("sudo npm install -g sqlink");
+  }
+}, []);
   return (
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
       <div className="container">

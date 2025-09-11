@@ -65,9 +65,9 @@ const config: Config = {
           position: "left",
           label: "Documentation",
         },
-        { to: "/releasenotes", label: "Release", position: "left" },
+        { to: "/blog", label: "Release", position: "left" },
         {
-          href: "https://github.com/facebook/docusaurus",
+          href: "https://github.com/sqlinkjs/SQLink",
           label: "GitHub",
           position: "right",
         },
@@ -103,7 +103,7 @@ const config: Config = {
           items: [
             {
               label: "Release Notes",
-              to: "/releasenotes",
+              to: "/blog",
             },
           ],
         },
