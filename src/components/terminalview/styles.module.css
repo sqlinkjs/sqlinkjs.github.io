@@ -1,0 +1,123 @@
+.terminal {
+  background-color: #1a1a1a;
+  color: #00ff00;
+  padding: 16px;
+  border-radius: 8px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  position: relative;
+  border: 1px solid #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 30rem;
+  margin-bottom: 1rem;
+}
+
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #333;
+}
+
+.terminalControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terminalButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.terminalButton {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminalButton.red {
+  background-color: #ff5f57;
+}
+
+.terminalButton.yellow {
+  background-color: #ffbd2e;
+}
+
+.terminalButton.green {
+  background-color: #28ca42;
+}
+
+.terminalTitle {
+  color: #888;
+  font-size: 12px;
+}
+
+.copyButton {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.copyButton:hover {
+  color: #00ff00;
+  background-color: #333;
+}
+
+.copyIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.terminalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.terminalLine {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.prompt {
+  color: #00ff00;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.terminalText {
+  flex: 1;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .terminal {
+    font-size: 12px;
+    padding: 12px;
+  }
+  
+  .terminalButton {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .cursor {
+    width: 6px;
+    height: 14px;
+  }
+}

@@ -1,27 +1,42 @@
-import type {ReactNode} from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Heading from '@theme/Heading';
+import { useMemo, type ReactNode } from "react";
+import clsx from "clsx";
+import Link from "@docusaurus/Link";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Layout from "@theme/Layout";
+import HomepageFeatures from "@site/src/components/HomepageFeatures";
+import Heading from "@theme/Heading";
 
-import styles from './index.module.css';
+import styles from "./index.module.css";
+import TerminalView from "../components/terminalview";
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
+
+  const installCommand = useMemo(() => {
+    if (navigator.platform.indexOf("Win") !== -1) {
+      return "npm install -g sqlink";
+    }
+    return "sudo npm install -g sqlink";
+  },[])
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header className={clsx("hero hero--primary", styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <div>
+          <p className={styles.gettingStarted}>Get started by installing</p>
+          <div className={styles.terminalContainer}>
+            <TerminalView text={installCommand} />
+          </div>
+        </div>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            to="/docs/intro"
+          >
+            📚 &nbsp;&nbsp; Documentation
           </Link>
         </div>
       </div>
@@ -30,11 +45,12 @@ function HomepageHeader() {
 }
 
 export default function Home(): ReactNode {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`SQLink Documentation`}
+      description="Documentation for SQLink, a Node.js ORM for SQL databases."
+    >
       <HomepageHeader />
       <main>
         <HomepageFeatures />
