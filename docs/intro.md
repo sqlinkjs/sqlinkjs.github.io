@@ -4,44 +4,25 @@ sidebar_position: 1
 
 # Introduction
 
-Let's discover **Docusaurus in less than 5 minutes**.
+**SQLink** is a free and open-source Node.js library designed to simplify database interactions by providing ready-to-use APIs for MySQL. With SQLink, developers can easily perform essential database operations such as reading data (GET), creating new entries (POST), updating existing records (PUT), and deleting data (DELETE) without having to manually code these functionalities.
 
-## Getting Started
+## Architecture
 
-Get started by **creating a new site**.
+![Docs Version Dropdown](./../static/img/architecture.png)
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+The diagram illustrates how multiple clients (such as applications or users) interact with a MySQL database through the SQLink REST API.
 
-### What you'll need
+- Each client sends an HTTP request to a REST endpoint exposed by the API.
+- The API translates the request into an SQL query and forwards it to the MySQL server.
+- The MySQL server processes the query and returns the query result.
+- Finally, the API sends back an API response to the requesting client.
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
 
-## Generate a new site
+## Features
+Additionally, SQLink offers built-in support for executing stored procedures, allowing you to pass arguments and handle more complex database logic seamlessly.
 
-Generate a new Docusaurus site using the **classic template**.
 
-The classic template will automatically be added to your project after you run the command:
 
-```bash
-npm init docusaurus@latest my-website classic
-```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+## Use Cases
+This library significantly reduces the time and effort required during the development process, particularly for those who want to focus on front-end development or need to quickly prototype their applications. Whether you're working on a personal project, learning new skills, or building a prototype, SQLink provides a robust solution that accelerates development by handling the backend for you.
