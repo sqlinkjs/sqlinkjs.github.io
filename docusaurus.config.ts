@@ -65,7 +65,7 @@ const config: Config = {
           position: "left",
           label: "Documentation",
         },
-        { to: "/blog", label: "Release", position: "left" },
+        { to: "/releases", label: "Releases", position: "left" },
         {
           href: "https://github.com/sqlinkjs/SQLink",
           label: "GitHub",
@@ -96,6 +96,10 @@ const config: Config = {
               label: "GitHub",
               href: "https://github.com/sqlinkjs/SQLink",
             },
+            {
+              label: "npm",
+              href: "https://www.npmjs.com/package/sqlink",
+            },
           ],
         },
         {
@@ -103,7 +107,7 @@ const config: Config = {
           items: [
             {
               label: "Release Notes",
-              to: "/blog",
+              to: "/releases",
             },
           ],
         },
