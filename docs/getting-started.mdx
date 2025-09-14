@@ -1,0 +1,60 @@
+---
+sidebar_position: 3
+title: Getting Started
+---
+
+import TerminalView from "@site/src/components/terminalview";
+
+
+# Getting Started
+
+Once **SQLink** is installed, you can start the application by running the following command in your terminal:
+
+<TerminalView text="sqlink run -h [Host] -u [User] -p [Password] -P [Port] -D [Database] -o [Output Port]" />
+
+---
+
+## Command Parameters
+
+All parameters are **mandatory** when starting SQLink:
+
+- **`-h` (Host)**  
+  The hostname or IP address of the MySQL server.  
+  Example: `localhost` or `192.168.1.10`
+
+- **`-u` (User)**  
+  The MySQL user account that has access to the target database.  
+  Example: `root`
+
+- **`-p` (Password)**  
+  The password for the MySQL user account.  
+  Example: `mYsQlPa$$W0rd`
+
+- **`-P` (Port)**  
+  The port on which the MySQL server is running.  
+  Default MySQL port is `3306`.
+
+- **`-D` (Database)**  
+  The name of the MySQL database to connect to.  
+  Example: `users`
+
+- **`-o` (Output Port)**  
+  The HTTP server port where SQLink will listen for API requests.  
+  Example: `3001`
+
+
+### Example
+<TerminalView text="sqlink run -h 192.168.1.10 -u root -p mYsQlPa$$W0rd -P 3306 -D users -o 3001" />
+
+---
+
+## How It Works
+
+When the above command runs successfully:
+
+1. SQLink connects to the specified **MySQL database**.  
+2. An **HTTP server** starts on the given output port (`-o`).  
+3. The server exposes REST endpoints corresponding to your database tables.  
+4. Incoming HTTP requests are translated into SQL queries and executed on the database.  
+5. Results are returned in a structured **JSON response**.
+
