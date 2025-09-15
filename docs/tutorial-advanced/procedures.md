@@ -4,85 +4,57 @@ sidebar_position: 3
 
 # Procedures
 
-Let's translate `docs/intro.md` to French.
+MySQL **stored procedures** allow you to encapsulate a sequence of SQL statements into a single reusable unit.  
+They are commonly used to:
 
-## Configure i18n
+- Automate repetitive database tasks  
+- Enforce business logic  
+- Improve performance by reducing round trips  
+- Enhance security by controlling how queries are executed  
 
-Modify `docusaurus.config.js` to add support for the `fr` locale:
+If you’re new to stored procedures, learn how to create them from the [MySQL official documentation](https://dev.mysql.com/doc/refman/8.0/en/create-procedure.html).
 
-```js title="docusaurus.config.js"
-export default {
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'fr'],
-  },
-};
+---
+
+## Endpoint
+
+- **URL**:  `http://localhost:PORT/procedure/PROCEDURE_NAME`
+- **Method**: `GET`  
+- **Response**: `200 OK` (on success)  
+
+---
+
+## Example
+
+### 1. Procedure Without Parameters
+
+**Request**
+
+```http
+GET http://localhost:3000/procedure/topFiveUsers()
 ```
+**Result**
 
-## Translate a doc
+Executes the stored procedure topFiveUsers and returns the result set.
 
-Copy the `docs/intro.md` file to the `i18n/fr` folder:
+### 2. Procedure With Parameters
 
-```bash
-mkdir -p i18n/fr/docusaurus-plugin-content-docs/current/
+**Request**
 
-cp docs/intro.md i18n/fr/docusaurus-plugin-content-docs/current/intro.md
+```http
+GET http://localhost:3000/procedure/topFiveUsers('Male')
 ```
+**Result**
 
-Translate `i18n/fr/docusaurus-plugin-content-docs/current/intro.md` in French.
+Executes the stored procedure `topFiveUsers` with `'Male'` as the input parameter.
+The arguments passed must match the parameters defined in the procedure.
 
-## Start your localized site
+> ⚠️ **Important Notes:**  
+> - The number and type of arguments passed must exactly match the procedure definition in MySQL.
+> - Procedures can return multiple result sets depending on their internal logic.
+> - Parameters must be passed in the same order as defined in the procedure.
 
-Start your site on the French locale:
-
-```bash
-npm run start -- --locale fr
-```
-
-Your localized site is accessible at [http://localhost:3001/fr/](http://localhost:3001/fr/) and the `Getting Started` page is translated.
-
-:::caution
-
-In development, you can only use one locale at a time.
-
-:::
-
-## Add a Locale Dropdown
-
-To navigate seamlessly across languages, add a locale dropdown.
-
-Modify the `docusaurus.config.js` file:
-
-```js title="docusaurus.config.js"
-export default {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: 'localeDropdown',
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
-```
-
-The locale dropdown now appears in your navbar:
-
-![Locale Dropdown](./img/localeDropdown.png)
-
-## Build your localized site
-
-Build your site for a specific locale:
-
-```bash
-npm run build -- --locale fr
-```
-
-Or build your site to include all the locales at once:
-
-```bash
-npm run build
-```
+## Best Practices
+- Use procedures to encapsulate complex logic instead of writing raw queries repeatedly.
+- Always validate input parameters before calling procedures.
+- Keep procedure definitions versioned (e.g., in migrations) for consistency across environments.

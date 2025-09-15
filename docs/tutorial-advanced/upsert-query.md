@@ -2,54 +2,56 @@
 sidebar_position: 3
 ---
 
-# Upsert Query
+# Upserting Data
 
-Docusaurus can manage multiple versions of your docs.
+An **upsert operation** is a database action that combines the functionalities of both **update** and **insert**.  
 
-## Create a docs version
+- If the record (identified by a unique key or primary key) **already exists**, the operation **updates** it with the new data.  
+- If the record **does not exist**, the operation **inserts** a new record into the database.  
 
-Release a version 1.0 of your project:
+This makes upserts useful for scenarios where you want to ensure a record exists with the latest data without manually checking first.
 
-```bash
-npm run docusaurus docs:version 1.0
+---
+
+## Endpoint
+
+- **URL**: `http://localhost:PORT/table/TABLE_NAME/upsert(id,value)`
+- **Method**: `POST`  
+- **Response**: `200 OK` (on success)  
+
+---
+
+## Example
+
+
+**Request**
+```http
+POST http://localhost:3000/table/users/upsert(userid,10)
+Content-Type: application/json
+```
+**Payload**
+```json
+{
+  "username": "John Doe",
+  "useremail": "johndoe@email.com",
+  "city": "Bangalore"
+}
 ```
 
-The `docs` folder is copied into `versioned_docs/version-1.0` and `versions.json` is created.
-
-Your docs now have 2 versions:
-
-- `1.0` at `http://localhost:3001/docs/` for the version 1.0 docs
-- `current` at `http://localhost:3001/docs/next/` for the **upcoming, unreleased docs**
-
-## Add a Version Dropdown
-
-To navigate seamlessly across versions, add a version dropdown.
-
-Modify the `docusaurus.config.js` file:
-
-```js title="docusaurus.config.js"
-export default {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: 'docsVersionDropdown',
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
+**Response**
+```json
+{
+  "success": true,
+  "message": "Upsert operation completed"
+}
 ```
 
-The docs version dropdown appears in your navbar:
+> ⚠️ **Important Notes:**  
+> - Ensure the `id` column used in the URL is a **unique identifier** (typically a primary key).
+> - Ensure the id column used in the URL is a unique identifier (typically a primary key).
+> - If constraints exist (e.g., `NOT NULL`, `UNIQUE`), the payload must satisfy them to avoid errors.
 
-![Docs Version Dropdown](./img/docsVersionDropdown.png)
-
-## Update an existing version
-
-It is possible to edit versioned docs in their respective folder:
-
-- `versioned_docs/version-1.0/hello.md` updates `http://localhost:3000/docs/hello`
-- `docs/hello.md` updates `http://localhost:3000/docs/next/hello`
+## Best Practices
+- Use upserts when syncing data or handling **idempotent operations** (safe to retry without creating duplicates).
+- Always validate payloads before sending them to SQLink.
+- Combine with authentication to ensure only authorized users can perform upserts.
