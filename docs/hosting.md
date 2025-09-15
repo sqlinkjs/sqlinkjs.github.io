@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 7
 title: Hosting Files
 ---
 import TerminalView from "@site/src/components/terminalview";

@@ -2,42 +2,56 @@
 sidebar_position: 2
 ---
 
-# Inserting data
+# Inserting Data
 
-Add **Markdown or React** files to `src/pages` to create a **standalone page**:
+In MySQL, **inserting data** refers to adding new records into a table.  
+With SQLink, this is done through a simple **POST request** to the `/create` endpoint, allowing you to populate a table with fresh entries.
 
-- `src/pages/index.js` → `localhost:3000/`
-- `src/pages/foo.md` → `localhost:3000/foo`
-- `src/pages/foo/bar.js` → `localhost:3000/foo/bar`
+---
 
-## Create your first React Page
+## Endpoint
 
-Create a file at `src/pages/my-react-page.js`:
+- **URL**:  `http://localhost:[PORT]/table/TABLE_NAME/create`
+- **Method**: `POST`  
+- **Response**: `200 OK` (on success)  
 
-```jsx title="src/pages/my-react-page.js"
-import React from 'react';
-import Layout from '@theme/Layout';
+---
 
-export default function MyReactPage() {
-  return (
-    <Layout>
-      <h1>My React page</h1>
-      <p>This is a React page</p>
-    </Layout>
-  );
+## Example
+
+Insert a New User
+
+**Request**
+```http
+POST http://localhost:3001/table/users/create
+Content-Type: application/json
+```
+
+**Payload**
+```json
+{
+  "username": "John Doe",
+  "useremail": "johndoe@email.com",
+  "city": "Bangalore"
 }
 ```
 
-A new page is now available at [http://localhost:3000/my-react-page](http://localhost:3000/my-react-page).
-
-## Create your first Markdown Page
-
-Create a file at `src/pages/my-markdown-page.md`:
-
-```mdx title="src/pages/my-markdown-page.md"
-# My Markdown page
-
-This is a Markdown page
+**Response**
+```json
+{
+  "success": true,
+  "message": "Data inserted successfully"
+}
 ```
 
-A new page is now available at [http://localhost:3000/my-markdown-page](http://localhost:3000/my-markdown-page).
+A new record will be inserted into the `users` table with the provided values.
+
+> ⚠️ **Important Notes:**  
+> - The **key names** in your JSON payload must exactly match the **column names** in the MySQL table.
+> - Missing required columns may cause an error, depending on your table schema (e.g., if a column is `NOT NULL`).
+> - SQLink will return a JSON response indicating whether the record was successfully inserted.
+
+## Best Practices
+- Always validate user input before sending it to the API to prevent invalid data from being inserted.
+- Use meaningful column names in your schema to make payloads more readable.
+- For bulk inserts, consider sending multiple requests or extending SQLink with batch processing (if supported).

@@ -1,0 +1,117 @@
+---
+sidebar_position: 4
+title: Authentication
+---
+
+import TerminalView from "@site/src/components/terminalview";
+
+
+# Authentication
+
+Authentication is the process of verifying the identity of a user or entity trying to access a system or resource.  
+It ensures that only authorized users can access sensitive data and perform specific actions. By confirming a user’s identity, authentication helps protect against unauthorized access and potential security threats.
+
+---
+
+## Enabling Authentication
+
+To enable authentication in your application using **SQLink**, run the following command in your terminal:
+
+<TerminalView text="sqlink run auth -h [Host] -u [User] -p [Password] -P [Port] -D [Database] -o [Output Port]" />
+
+## Command Parameters
+
+All parameters are **mandatory** when starting SQLink:
+
+- **`auth`**  
+  Ensures all incoming requests are authenticated with JWT Bearer. 
+
+- **`-h` (Host)**  
+  The hostname or IP address of the MySQL server.  
+  Example: `localhost` or `192.168.1.10`
+
+- **`-u` (User)**  
+  The MySQL user account that has access to the target database.  
+  Example: `root`
+
+- **`-p` (Password)**  
+  The password for the MySQL user account.  
+  Example: `mYsQlPa$$W0rd`
+
+- **`-P` (Port)**  
+  The port on which the MySQL server is running.  
+  Default MySQL port is `3306`.
+
+- **`-D` (Database)**  
+  The name of the MySQL database to connect to.  
+  Example: `my_database`
+
+- **`-o` (Output Port)**  
+  The HTTP server port where SQLink will listen for API requests.  
+  Example: `3001`
+
+
+### Example
+<TerminalView text="sqlink run auth -h 192.168.1.10 -u root -p mYsQlPa$$W0rd -P 3306 -D my_database -o 3001" />
+
+---
+
+## Authentication APIs
+
+### Register a new user
+To register a new user, send a `POST` request to the `/auth/register` endpoint with the following JSON body:
+
+```http
+POST http://localhost:3001/auth/register
+```
+
+Request body:
+```json
+{
+  "email": "your_username",
+  "password": "your_password"
+}
+```
+Response:
+```json
+{
+  "success": true,
+  "message": "User register succesful"
+}
+```
+> ⚠️ **Important:**  
+ - Please note that whenever you run the sqlink with authentication there will be a table created by the library `users_created_by_sqlink`.
+ - This table contains the email and encrypted password of the users registered through the `/auth/register` endpoint.
+
+
+### Login a user
+To log in a user, send a `POST` request to the `/auth/login` endpoint with the following JSON body:
+
+```http
+POST http://localhost:3001/auth/login
+```
+
+Request body:
+```json
+{
+  "email": "your_username",
+  "password": "your_password"
+}
+```
+Response:
+```json
+{
+  "success": true,
+  "token":  "your_jwt_token"
+}
+``` 
+> ⚠️ **Important:**  
+ - You need to use the generated `your_jwt_token` from the login API, for all your queries, you need to use it as Bearer token.
+ - Example: `Authorization: Bearer your_jwt_token`
+ - If you do not provide the token or provide an invalid token, you will receive following response.
+    ```json
+    {
+      "success": false,
+      "message": "Access Denied"
+    }
+    ```
